@@ -1,5 +1,6 @@
-/* projeto/frontend/src/App.css (COMPLETO E CORRIGIDO) */
+/* projeto/frontend/src/App.css (COMPLETO E FINAL COM NOVO HEADER) */
 
+/* Estilos de Autenticação */
 .auth-page-container {
   display: flex;
   justify-content: center;
@@ -14,9 +15,10 @@
   padding: 40px;
   background: var(--color-card-bg);
   border-radius: 12px;
-  box-shadow: var(--shadow-hover);
+  box-shadow: var(--shadow-hover), var(--shadow-card-glow);
   border: 1px solid var(--color-border);
-  transition: all 0.3s;
+  transition: all 0.4s ease;
+  background-image: linear-gradient(145deg, #1e1e2d 95%, rgba(58, 123, 213, 0.05) 100%);
 }
 
 .auth-form h2 {
@@ -28,7 +30,7 @@
 }
 
 .auth-form input {
-  margin-bottom: 25px; 
+  margin-bottom: 25px;
 }
 
 .switch-link {
@@ -43,7 +45,7 @@
   cursor: pointer;
   font-weight: 500;
   text-decoration: none;
-  border-bottom: 1px solid transparent; 
+  border-bottom: 1px solid transparent;
   transition: color 0.2s, border-bottom 0.2s;
 }
 
@@ -62,7 +64,12 @@
   text-align: center;
   font-size: 0.9rem;
   font-weight: 500;
+  animation: fadeIn 0.3s ease-out;
 }
+
+/* ============================================= */
+/* === ESTILOS GLOBAIS E HEADER (Aprimorado) === */
+/* ============================================= */
 
 .App {
   display: flex;
@@ -75,50 +82,106 @@
   width: 100%;
   padding: 20px 50px;
   background-color: #1e1e2d;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-primary);
   text-align: center;
   margin-bottom: 40px;
-  box-shadow: var(--shadow-subtle);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.header-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.welcome-section {
+  text-align: left;
 }
 
 .App-header h1 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: var(--color-secondary);
-  margin-bottom: 5px;
+  margin: 0 0 5px 0;
+  font-weight: 800;
 }
 
 .App-header p {
   font-size: 1rem;
   color: var(--color-text-dim);
+  margin: 0;
 }
 
 .logout-button {
-  margin-top: 15px;
-  padding: 8px 15px;
-  font-size: 0.9rem;
-  background-color: #cc0000 !important;
   width: auto !important;
-  max-width: 250px;
+  min-width: 150px;
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  background-color: var(--color-card-bg) !important;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-dim) !important;
   border-radius: 6px;
-  margin-left: auto; 
-  margin-right: auto;
-  display: block;
+  margin: 0;
+  transition: all 0.2s;
+  box-shadow: none;
 }
 
 .logout-button:hover {
-  background-color: #990000 !important;
-  transform: none !important;
+  background-color: #3e2020 !important;
+  color: var(--color-error) !important;
+  transform: translateY(-2px);
+  border-color: var(--color-error);
 }
 
+/* Navegação Principal */
+.main-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 10px;
+  margin-bottom: 0;
+}
+
+.nav-button {
+  width: auto !important;
+  max-width: 250px;
+  padding: 12px 25px;
+  background-color: transparent !important;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-dim);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: none;
+  border-radius: 8px;
+}
+
+.nav-button:hover {
+  background-color: #27273a !important;
+  color: var(--color-text-light);
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-subtle);
+}
+
+.nav-button.active {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary);
+  color: white;
+  font-weight: 600;
+  transform: none !important;
+  box-shadow: 0 4px 8px rgba(58, 123, 213, 0.5);
+}
+
+/* Container do Formulário de Etapas */
 .form-container {
   width: 100%;
   max-width: 700px;
   padding: 40px;
   background: var(--color-card-bg);
   border-radius: 12px;
-  box-shadow: var(--shadow-subtle);
+  box-shadow: var(--shadow-subtle), var(--shadow-card-glow);
   border: 1px solid var(--color-border);
   margin-bottom: 40px;
+  background-image: linear-gradient(145deg, #1e1e2d 95%, rgba(58, 123, 213, 0.05) 100%);
 }
 
 .form-container h2 {
@@ -128,6 +191,7 @@
   padding-bottom: 10px;
   border-bottom: 2px solid var(--color-border);
 }
+
 .status-area {
   width: 100%;
   max-width: 700px;
@@ -150,13 +214,14 @@
   border-radius: 8px;
   font-size: 1.1rem;
   font-weight: 600;
-  transition: background-color 0.2s, transform 0.1s;
+  transition: background-color 0.2s, transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .download-button:hover {
   background-color: #3e8e41;
   text-decoration: none;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .spinner {
@@ -174,8 +239,13 @@
   100% { transform: rotate(360deg); }
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .loading-state {
-  min-height: 100vh;
+  min-height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -183,43 +253,62 @@
   color: var(--color-text-light);
 }
 
-/* ============================================= */
-/* === NOVOS ESTILOS PARA FORMULÁRIO DE ETAPAS === */
-/* ============================================= */
-
+/* Estilos de Formulário Multietapas */
 .step-progress-container {
   display: flex;
   justify-content: space-between;
   width: 80%;
-  margin: -10px auto 40px auto; /* Sobe um pouco para perto do H2 */
+  margin: -10px auto 40px auto;
   position: relative;
+  padding-bottom: 25px;
 }
 
-/* Linha de progresso (opcional, mas legal) */
 .step-progress-container::before {
   content: '';
   position: absolute;
-  top: 50%;
+  top: 15px;
   left: 0;
   width: 100%;
   height: 2px;
   background-color: var(--color-border);
-  transform: translateY(-50%);
   z-index: 1;
+}
+
+.step-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  position: relative;
+}
+
+.step-title {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-dim);
+  text-align: center;
+  transition: color 0.3s ease;
+  max-width: 100px;
+}
+
+.step-title.active {
+  color: var(--color-primary);
+  font-weight: 600;
 }
 
 .step-indicator {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: var(--color-card-bg); /* Fundo igual ao card */
+  background: var(--color-card-bg);
   border: 2px solid var(--color-border);
   color: var(--color-text-dim);
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  z-index: 2; /* Fica em cima da linha */
+  z-index: 2;
   transition: all 0.3s ease;
 }
 
@@ -227,11 +316,11 @@
   background: var(--color-primary);
   border-color: var(--color-primary);
   color: #fff;
-  box-shadow: 0 0 10px var(--color-primary);
+  box-shadow: 0 0 10px var(--color-primary), 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
 .form-step {
-  /* Ocultado via React (condicional), não CSS */
+  animation: fadeIn 0.5s ease-out;
 }
 
 .form-step h3 {
@@ -252,25 +341,58 @@
 
 .form-navigation button {
   width: auto;
-  min-width: 120px; /* Largura mínima para botões */
-  padding: 10px 20px;
+  min-width: 150px;
+  padding: 12px 20px;
 }
 
 .back-button {
   background-color: var(--color-card-bg) !important;
   border: 1px solid var(--color-border);
   color: var(--color-text-light);
+  box-shadow: var(--shadow-subtle);
 }
 
 .back-button:hover {
-  background-color: var(--color-border) !important;
-  transform: none !important;
+  background-color: #333344 !important;
+  transform: translateY(-2px) !important;
 }
 
-/* Estilos para Radio/Select */
+.validation-error {
+  color: var(--color-error);
+  font-size: 0.9rem;
+  margin-top: -15px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+/* Contador de Caracteres */
+.char-counter {
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--color-text-dim);
+  margin-top: -15px;
+  margin-bottom: 20px;
+  padding-right: 5px;
+  transition: color 0.3s;
+}
+
+.char-counter.warning {
+  color: #ffc107;
+  font-weight: 500;
+}
+
+.char-counter.error {
+  color: var(--color-error);
+  font-weight: 600;
+}
+
+/* Estilos de Radio/Select */
 .form-container select {
   margin-bottom: 25px;
-  /* (O estilo base de 'input' já deve ser aplicado) */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23999999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  padding-right: 40px;
 }
 
 .radio-group {
@@ -295,7 +417,7 @@
 }
 
 .radio-group label:hover {
-  background-color: var(--color-border);
+  background-color: #27273a;
 }
 
 .radio-group input[type="radio"] {
@@ -309,6 +431,7 @@
   vertical-align: middle;
   position: relative;
   top: -2px;
+  min-height: auto;
 }
 
 .radio-group input[type="radio"]::before {
@@ -326,5 +449,79 @@
 }
 
 .radio-group input[type="radio"]:checked::before {
-  transform: translate(-50%, -50%) scale(1); 
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Estilos de Histórico */
+.history-container {
+    padding: 40px;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #27273a;
+    border-radius: 8px;
+    border-left: 5px solid var(--color-secondary);
+    box-shadow: var(--shadow-subtle);
+}
+
+.history-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.history-details strong {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    margin-bottom: 5px;
+}
+
+.history-date {
+    font-size: 0.85rem;
+    color: var(--color-text-dim);
+}
+
+.history-status {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.status-concluído {
+    color: var(--color-success);
+}
+.status-erro {
+    color: var(--color-error);
+}
+
+.small-download-button {
+    min-width: 120px !important;
+    width: auto !important;
+    padding: 8px 15px !important;
+    font-size: 0.9rem !important;
+    margin: 0 !important;
+}
+
+.no-history-message {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color-text-dim);
+    padding: 30px;
+    border: 1px dashed var(--color-border);
+    border-radius: 8px;
+}
+
+.success-message {
+    color: var(--color-success);
+    font-weight: 500;
+    font-size: 1.1rem;
 }

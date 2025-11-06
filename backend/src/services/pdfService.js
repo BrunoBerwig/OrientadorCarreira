@@ -1,3 +1,4 @@
+// projeto/backend/src/services/pdfService.js (COMPLETO E CORRIGIDO)
 import PDFDocument from 'pdfkit';
 import fs from 'fs';
 import path from 'path';
@@ -15,7 +16,7 @@ if (!fs.existsSync(REPORTS_DIR)) {
  * @param {object} sugestaoIA
  * @param {string} nomeUsuario
  * @param {string} fileName
- * @returns {Promise<string>}
+ * @returns {Promise<string>} Retorna APENAS o nome do arquivo.
  */
 export function gerarRelatorioPDF(sugestaoIA, nomeUsuario, fileName) {
     return new Promise((resolve, reject) => {
@@ -23,7 +24,8 @@ export function gerarRelatorioPDF(sugestaoIA, nomeUsuario, fileName) {
         const doc = new PDFDocument();
         const stream = fs.createWriteStream(filePath);
 
-        stream.on('finish', () => resolve(filePath));
+        // CORREÇÃO: Resolve a Promise com o NOME DO ARQUIVO (fileName), não o filePath
+        stream.on('finish', () => resolve(fileName)); 
         stream.on('error', (err) => reject(err));
 
         doc.info.Title = 'Relatório Orientação de Carreira';
@@ -40,7 +42,7 @@ export function gerarRelatorioPDF(sugestaoIA, nomeUsuario, fileName) {
 
         (sugestaoIA.areas_sugeridas || []).forEach((item, index) => {
             doc.fontSize(12).fillColor('#000000').text(`• Área ${index + 1}: ${item.area}`, { bold: true });
-            doc.fontSize(10).fillColor('#333333').text(`   Justificativa: ${item.justificativa}`, { indent: 15, align: 'justify' });
+            doc.fontSize(10).fillColor('#333333').text(`   Justificativa: ${item.justificativa}`, { indent: 15, align: 'justify' });
             doc.moveDown(0.5);
         });
 

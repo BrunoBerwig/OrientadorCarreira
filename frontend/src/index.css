@@ -1,15 +1,16 @@
 :root {
   --color-primary: #3a7bd5;
   --color-secondary: #0093E9;
-  --color-background: #12121e; 
+  --color-background: #12121e;
   --color-card-bg: #1e1e2d;
-  --color-text-light: #e0e0e0; 
+  --color-text-light: #e0e0e0;
   --color-text-dim: #999999;
   --color-border: #333344;
-  --color-success: #4CAF50; 
+  --color-success: #4CAF50;
   --color-error: #FF5555;
   --shadow-subtle: 0 4px 10px rgba(0, 0, 0, 0.2);
   --shadow-hover: 0 6px 15px rgba(0, 0, 0, 0.3);
+  --shadow-card-glow: 0 0 15px rgba(58, 123, 213, 0.15);
 }
 
 * {
@@ -32,7 +33,6 @@ body {
   min-height: 100vh;
 }
 
-/* Estilos de Formulário Comuns */
 label {
   display: block;
   margin-bottom: 8px;
@@ -41,10 +41,17 @@ label {
   color: var(--color-text-light);
 }
 
+.required-asterisk {
+  color: var(--color-error);
+  margin-left: 5px;
+  font-weight: bold;
+}
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
-textarea {
+textarea,
+select {
   width: 100%;
   padding: 12px 15px;
   margin-bottom: 20px;
@@ -53,16 +60,23 @@ textarea {
   background-color: #27273a;
   color: var(--color-text-light);
   font-size: 1rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.3s, box-shadow 0.3s;
   resize: vertical;
   min-height: 50px;
+  appearance: none;
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
   border-color: var(--color-primary);
   outline: none;
   box-shadow: 0 0 0 2px rgba(58, 123, 213, 0.5);
+}
+
+::placeholder {
+  color: var(--color-text-dim);
+  opacity: 0.7;
 }
 
 textarea {
@@ -79,25 +93,31 @@ button {
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
+  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 button:hover:not(:disabled) {
   background-color: #306eb5;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
 
 button:disabled {
   background-color: var(--color-text-dim);
   cursor: not-allowed;
-  opacity: 0.7;
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
 }
 
 a {
   color: var(--color-primary);
   text-decoration: none;
+  transition: color 0.2s;
 }
 
 a:hover {
+  color: var(--color-secondary);
   text-decoration: underline;
 }
