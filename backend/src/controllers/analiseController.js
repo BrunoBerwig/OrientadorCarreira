@@ -1,4 +1,3 @@
-// backend/src/controllers/analiseController.js
 import { salvarRespostas, atualizarAnalise } from '../services/analiseService.js';
 import { analisarComIA } from '../services/iaService.js';
 import { gerarRelatorioPDF } from '../services/pdfService.js';
@@ -6,7 +5,7 @@ import { gerarRelatorioPDF } from '../services/pdfService.js';
 export async function iniciarAnalise(req, res) {
     const usuarioId = req.userId; 
     const nomeUsuario = req.userName; 
-    const emailUsuario = req.userEmail; // <-- MUDANÇA AQUI
+    const emailUsuario = req.userEmail; 
     const { respostas } = req.body; 
 
     if (!respostas) {
@@ -16,7 +15,6 @@ export async function iniciarAnalise(req, res) {
     let analiseId;
 
     try {
-        // Passa o e-mail do usuário para salvar no banco
         const result = await salvarRespostas(usuarioId, nomeUsuario, emailUsuario, respostas); // <-- MUDANÇA AQUI
         analiseId = result.id;
         

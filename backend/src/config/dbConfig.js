@@ -1,5 +1,4 @@
 import 'dotenv/config'; 
-
 import pg from 'pg';
 
 const pool = new pg.Pool({
@@ -25,7 +24,11 @@ export async function createTables() {
     const createAnalisesTableQuery = `
         CREATE TABLE IF NOT EXISTS analises (
             id SERIAL PRIMARY KEY,
-            usuario_id INTEGER REFERENCES usuarios(id) ON DELETE CASCADE, -- Chave estrangeira
+            usuario_id INTEGER REFERENCES usuarios(id) ON DELETE CASCADE,
+        
+            nome_usuario VARCHAR(100),
+            email_usuario VARCHAR(100),
+
             respostas_json JSONB NOT NULL,
             sugestao_ia JSONB,
             pdf_url VARCHAR(255),
@@ -39,7 +42,7 @@ export async function createTables() {
         console.log('Tabela "usuarios" verificada/criada com sucesso.');
         
         await pool.query(createAnalisesTableQuery);
-        console.log('Tabela "analises" verificada/criada com sucesso (com FK).');
+        console.log('Tabela "analises" verificada/criada com sucesso (com FK e colunas de nome/email).'); // Mensagem atualizada
 
     } catch (err) {
         console.error('ERRO ao criar as tabelas:', err.message);
